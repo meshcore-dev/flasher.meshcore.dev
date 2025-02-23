@@ -202,7 +202,7 @@ function setup() {
       }
     }
     else if(device.type === 'nrf52') {
-      const dfu = this.flashing.instance = new Dfu(port, selected.wipe);
+      const dfu = flashing.instance = new Dfu(port, selected.wipe);
 
       const zipFile = await resp.blob();
       flashing.active = true;
