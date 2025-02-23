@@ -1,375 +1,375 @@
 {
-	"basePath": "./firmware",
-	"role": {
-		"gui": {
-			"icon": "gradient",
-			"title": "Client GUI",
-			"tooltip": "all your device settings are saved on internal flash"
-		},
-		"guiSD": {
-			"icon": "gradient",
-			"title": "Client GUI: data on SD card",
-			"tooltip": "all your device settings are saved on SD card"
-		},
-		"companionBle": {
-			"icon": "smartphone",
-			"class": "primary-text",
-			"title": "Companion radio: Bluetooth",
-			"tooltip": "Chat via mobile phone App or Web Client"
-		},
-		"companionUsb": {
-			"icon": "usb",
-			"title": "Companion radio: USB",
-			"tooltip": "Chat via Web client or command line client"
-		},
-		"repeater": {
-			"icon": "cell_tower",
-			"title": "Repeater",
-			"tooltip": "Special role just for routing packets. Configured via <b>Console</b> on flasher main page"
-		},
-		"roomServer": {
-			"icon": "forum",
-			"title": "Room Server",
-			"tooltip": "Special role for local room and routing packets. Configured via <b>Console</b> on flasher main page"
-		}
-	},
-	"device": [
-		{
-			"name": "Lilygo T-Deck",
-			"tooltip": "<img class='device' src='/img/lilygo_tdeck.png'>",
-			"type": "esp32",
-			"firmware": [
-				{
-					"role": "gui",
-					"files": [
-						{
-							"type": "flash",
-							"name": "RippleUltra-TDeck-v6.0-beta21-merged.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						},
-						{
-							"type": "download",
-							"name": "RippleUltra-TDeck-v6.0-beta21.bin",
-							"title": "App firmware bin (use with m5 booloader)"
-						}
-					]
-				},
-				{
-					"role": "guiSD",
-					"files": [
-						{
-							"type": "flash",
-							"name": "RippleUltra-TDeck-SD-v6.0-beta21-merged.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						},
-						{
-							"type": "download",
-							"name": "RippleUltra-TDeck-SD-v6.0-beta21.bin",
-							"title": "App firmware bin (use with m5 booloader)"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Lilygo T3 S3",
-			"type": "esp32",
-			"tooltip": "<img class='device' src='/img/lilygo_t3s3.png'>",
-			"firmware": [
-				{
-					"role": "companionUsb",
-					"files": [
-						{
-							"type": "flash",
-							"name": "LilyGo_T3S3_sx1262_companion_radio_usb.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "companionBle",
-					"files": [
-						{
-							"type": "flash",
-							"name": "LilyGo_T3S3_sx1262_companion_radio_ble.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "LilyGo_T3S3_sx1262_Repeater.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Heltec v2",
-			"type": "esp32",
-			"tooltip": "<img class='device' src='/img/heltec_v3.png'>",
-			"firmware": [
-				{
-					"role": "companionUsb",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_v2_companion_radio_usb.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_v2_repeater.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Heltec v3",
-			"type": "esp32",
-			"tooltip": "<img class='device' src='/img/heltec_v3.png'>",
-			"firmware": [
-				{
-					"role": "companionUsb",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_v3_companion_radio_usb.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "companionBle",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_v3_companion_radio_ble.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_v3_repeater.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "roomServer",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_v3_room_server.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Heltec T114",
-			"type": "nrf52",
-			"tooltip": "<img class='device' src='/img/heltec_t114.png'>",
-			"firmware": [
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_T114_repeater.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "Heltec_T114_repeater.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				},
-				{
-					"role": "roomServer",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Heltec_T114_room_server.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "Heltec_T114_room_server.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "RAK Wireless WisBlock / WisMesh (RAK 4631)",
-			"type": "nrf52",
-			"tooltip": "<img class='device' src='/img/rak_4631.png'>",
-			"firmware": [
-				{
-					"role": "companionUsb",
-					"files": [
-						{
-							"type": "flash",
-							"name": "RAK_4631_companion_radio_usb.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "RAK_4631_companion_radio_usb.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				},
-				{
-					"role": "companionBle",
-					"files": [
-						{
-							"type": "flash",
-							"name": "RAK_4631_companion_radio_ble.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "RAK_4631_companion_radio_ble.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				},
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "RAK_4631_Repeater.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "RAK_4631_Repeater.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				},
-				{
-					"role": "roomServer",
-					"files": [
-						{
-							"type": "flash",
-							"name": "RAK_4631_room_server.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "RAK_4631_room_server.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Seeed Studio SenseCAP T1000-E",
-			"tooltip": "<img class='device' src='/img/seeed_t1000e.png'>",
-			"type": "nrf52",
-			"firmware": [
-				{
-					"role": "companionBle",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Seeed_T1000e_companion_radio_ble.zip",
-							"title": "firmware OTA zip"
-						},
-						{
-							"type": "download",
-							"name": "Seeed_T1000e_companion_radio_ble.uf2",
-							"title": "firmware uf2"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Seeed Studio Xiao C3",
-			"tooltip": "<img class='device' src='/img/xiao_s3.png'>",
-			"type": "esp32",
-			"firmware": [
-				{
-					"role": "repeater",
-					"title": "Repeater (Semtech SX1262)",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Xiao_C3_Repeater_sx1262.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				},
-				{
-					"role": "repeater",
-					"title": "Repeater (Semtech SX1268)",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Xiao_C3_Repeater_sx1268.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Seeed Studio Xiao S3 WIO",
-			"tooltip": "<img class='device' src='/img/xiao_s3.png'>",
-			"type": "esp32",
-			"firmware": [
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Xiao_S3_WIO_Repeater.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "UnitEng Station G2",
-			"tooltip": "<img class='device' src='/img/station_g2.png'>",
-			"type": "esp32",
-			"firmware": [
-				{
-					"role": "repeater",
-					"files": [
-						{
-							"type": "flash",
-							"name": "Station_G2_repeater.bin",
-							"title": "Combined app+partition+bootloader firmware bin"
-						}
-					]
-				}
-			]
-		}
-	]
+  "basePath": "./firmware",
+  "role": {
+    "gui": {
+      "icon": "gradient",
+      "title": "Client GUI",
+      "tooltip": "all your device settings are saved on internal flash"
+    },
+    "guiSD": {
+      "icon": "gradient",
+      "title": "Client GUI: data on SD card",
+      "tooltip": "all your device settings are saved on SD card"
+    },
+    "companionBle": {
+      "icon": "smartphone",
+      "class": "primary-text",
+      "title": "Companion radio: Bluetooth",
+      "tooltip": "Chat via mobile phone App or Web Client"
+    },
+    "companionUsb": {
+      "icon": "usb",
+      "title": "Companion radio: USB",
+      "tooltip": "Chat via Web client or command line client"
+    },
+    "repeater": {
+      "icon": "cell_tower",
+      "title": "Repeater",
+      "tooltip": "Special role just for routing packets. Configured via <b>Console</b> on flasher main page"
+    },
+    "roomServer": {
+      "icon": "forum",
+      "title": "Room Server",
+      "tooltip": "Special role for local room and routing packets. Configured via <b>Console</b> on flasher main page"
+    }
+  },
+  "device": [
+    {
+      "name": "Lilygo T-Deck",
+      "tooltip": "<img class='device' src='/img/lilygo_tdeck.png'>",
+      "type": "esp32",
+      "firmware": [
+        {
+          "role": "gui",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RippleUltra-TDeck-v6.0-beta21-merged.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            },
+            {
+              "type": "download",
+              "name": "RippleUltra-TDeck-v6.0-beta21.bin",
+              "title": "App firmware bin (use with m5 booloader)"
+            }
+          ]
+        },
+        {
+          "role": "guiSD",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RippleUltra-TDeck-SD-v6.0-beta21-merged.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            },
+            {
+              "type": "download",
+              "name": "RippleUltra-TDeck-SD-v6.0-beta21.bin",
+              "title": "App firmware bin (use with m5 booloader)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Lilygo T3 S3",
+      "type": "esp32",
+      "tooltip": "<img class='device' src='/img/lilygo_t3s3.png'>",
+      "firmware": [
+        {
+          "role": "companionUsb",
+          "files": [
+            {
+              "type": "flash",
+              "name": "LilyGo_T3S3_sx1262_companion_radio_usb.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "companionBle",
+          "files": [
+            {
+              "type": "flash",
+              "name": "LilyGo_T3S3_sx1262_companion_radio_ble.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "LilyGo_T3S3_sx1262_Repeater.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Heltec v2",
+      "type": "esp32",
+      "tooltip": "<img class='device' src='/img/heltec_v3.png'>",
+      "firmware": [
+        {
+          "role": "companionUsb",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_v2_companion_radio_usb.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_v2_repeater.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Heltec v3",
+      "type": "esp32",
+      "tooltip": "<img class='device' src='/img/heltec_v3.png'>",
+      "firmware": [
+        {
+          "role": "companionUsb",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_v3_companion_radio_usb.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "companionBle",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_v3_companion_radio_ble.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_v3_repeater.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "roomServer",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_v3_room_server.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Heltec T114",
+      "type": "nrf52",
+      "tooltip": "<img class='device' src='/img/heltec_t114.png'>",
+      "firmware": [
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_T114_repeater.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "Heltec_T114_repeater.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        },
+        {
+          "role": "roomServer",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Heltec_T114_room_server.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "Heltec_T114_room_server.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "RAK Wireless WisBlock / WisMesh (RAK 4631)",
+      "type": "nrf52",
+      "tooltip": "<img class='device' src='/img/rak_4631.png'>",
+      "firmware": [
+        {
+          "role": "companionUsb",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RAK_4631_companion_radio_usb.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "RAK_4631_companion_radio_usb.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        },
+        {
+          "role": "companionBle",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RAK_4631_companion_radio_ble.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "RAK_4631_companion_radio_ble.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        },
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RAK_4631_Repeater.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "RAK_4631_Repeater.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        },
+        {
+          "role": "roomServer",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RAK_4631_room_server.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "RAK_4631_room_server.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seeed Studio SenseCAP T1000-E",
+      "tooltip": "<img class='device' src='/img/seeed_t1000e.png'>",
+      "type": "nrf52",
+      "firmware": [
+        {
+          "role": "companionBle",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Seeed_T1000e_companion_radio_ble.zip",
+              "title": "firmware OTA zip"
+            },
+            {
+              "type": "download",
+              "name": "Seeed_T1000e_companion_radio_ble.uf2",
+              "title": "firmware uf2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seeed Studio Xiao C3",
+      "tooltip": "<img class='device' src='/img/xiao_s3.png'>",
+      "type": "esp32",
+      "firmware": [
+        {
+          "role": "repeater",
+          "title": "Repeater (Semtech SX1262)",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Xiao_C3_Repeater_sx1262.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        },
+        {
+          "role": "repeater",
+          "title": "Repeater (Semtech SX1268)",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Xiao_C3_Repeater_sx1268.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Seeed Studio Xiao S3 WIO",
+      "tooltip": "<img class='device' src='/img/xiao_s3.png'>",
+      "type": "esp32",
+      "firmware": [
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Xiao_S3_WIO_Repeater.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "UnitEng Station G2",
+      "tooltip": "<img class='device' src='/img/station_g2.png'>",
+      "type": "esp32",
+      "firmware": [
+        {
+          "role": "repeater",
+          "files": [
+            {
+              "type": "flash",
+              "name": "Station_G2_repeater.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

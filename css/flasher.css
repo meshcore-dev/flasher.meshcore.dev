@@ -1,0 +1,48 @@
+body {
+  display: flex;
+  height: 100vh;
+}
+
+#flasher {
+  flex-grow: 1;
+}
+#flasher img.device {
+  width: 300px;
+}
+#flasher div.autoscroller {
+  overflow: auto;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+#flasher pre.term {
+  font-family: monospace;
+}
+#flasher .overlay {
+  display: flex !important;
+  flex-direction: column;
+}
+#flasher .console {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin: 0;
+}
+#flasher .console .holder {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+#flasher .console-input {
+  flex-grow: 1;
+  display: block;
+  appearance: none;
+  background: transparent;
+  border: 0;
+  font-family: monospace;
+  font-size: .875rem;
+}
+#flasher .console-input:focus, #flasher console-input:focus{
+  outline: none;
+}
