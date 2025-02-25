@@ -72,6 +72,28 @@
       ]
     },
     {
+      "name": "Lilygo T5 E-Paper S3 Pro",
+      "tooltip": "<img class='device' src='/img/lilygo_t5_pro.png'>",
+      "type": "esp32",
+      "firmware": [
+        {
+          "role": "gui",
+          "files": [
+            {
+              "type": "flash",
+              "name": "RippleUltra-T5-epaper-v6.0-beta21-merged.bin",
+              "title": "Combined app+partition+bootloader firmware bin"
+            },
+            {
+              "type": "download",
+              "name": "RippleUltra-T5-epaper-v6.0-beta21.bin",
+              "title": "App firmware bin (use with m5 booloader)"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Lilygo T3 S3",
       "type": "esp32",
       "tooltip": "<img class='device' src='/img/lilygo_t3s3.png'>",

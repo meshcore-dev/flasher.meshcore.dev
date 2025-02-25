@@ -356,7 +356,7 @@ const template = `
         <button class="transparent" @click="openSerialCon()">
           <i>terminal</i>
           <span>Console</span>
-          <div class="tooltip left max">Open serial console to manage Routers and Room servers via serial terminal</div>
+          <div class="tooltip left max">Open serial console to manage Routers and Room servers</div>
         </button>
       </nav>
       <nav class="no-margin">
