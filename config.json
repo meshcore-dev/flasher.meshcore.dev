@@ -1,5 +1,5 @@
 {
-  "basePath": "./firmware",
+  "staticPath": "/firmware",
   "role": {
     "gui": {
       "icon": "gradient",
@@ -14,12 +14,14 @@
     "companionBle": {
       "icon": "smartphone",
       "class": "primary-text",
-      "title": "Companion radio: Bluetooth",
+      "title": "Companion radio",
+      "subTitle": "Bluetooth",
       "tooltip": "Chat via mobile phone App or Web Client"
     },
     "companionUsb": {
       "icon": "usb",
-      "title": "Companion radio: USB",
+      "title": "Companion radio",
+      "subTitle": "USB",
       "tooltip": "Chat via Web client or command line client"
     },
     "repeater": {
@@ -41,33 +43,69 @@
       "firmware": [
         {
           "role": "gui",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RippleUltra-TDeck-v6.0-beta21-merged.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "version": {
+            "v6.2": {
+              "files": [
+                {
+                  "type": "flash",
+                  "name": "RippleUltra-TDeck-v6.2-merged.bin",
+                  "title": "Combined app+partition+bootloader firmware bin"
+                },
+                {
+                  "type": "download",
+                  "name": "RippleUltra-TDeck-v6.2.bin",
+                  "title": "App firmware bin (use with m5 booloader)"
+                }
+              ]
             },
-            {
-              "type": "download",
-              "name": "RippleUltra-TDeck-v6.0-beta21.bin",
-              "title": "App firmware bin (use with m5 booloader)"
+            "v6.0-beta22": {
+              "files": [
+                {
+                  "type": "flash",
+                  "name": "RippleUltra-TDeck-v6.0-beta22-merged.bin",
+                  "title": "Combined app+partition+bootloader firmware bin"
+                },
+                {
+                  "type": "download",
+                  "name": "RippleUltra-TDeck-v6.0-beta22.bin",
+                  "title": "App firmware bin (use with m5 booloader)"
+                }
+              ]
             }
-          ]
+          }
         },
         {
           "role": "guiSD",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RippleUltra-TDeck-SD-v6.0-beta21-merged.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "version": {
+            "v6.2": {
+              "files": [
+                {
+                  "type": "flash",
+                  "name": "RippleUltra-TDeck-SD-v6.2-merged.bin",
+                  "title": "Combined app+partition+bootloader firmware bin"
+                },
+                {
+                  "type": "download",
+                  "name": "RippleUltra-TDeck-SD-v6.2.bin",
+                  "title": "App firmware bin (use with m5 booloader)"
+                }
+              ]
             },
-            {
-              "type": "download",
-              "name": "RippleUltra-TDeck-SD-v6.0-beta21.bin",
-              "title": "App firmware bin (use with m5 booloader)"
+            "v6.0-beta22": {
+              "files": [
+                {
+                  "type": "flash",
+                  "name": "RippleUltra-TDeck-SD-v6.0-beta22-merged.bin",
+                  "title": "Combined app+partition+bootloader firmware bin"
+                },
+                {
+                  "type": "download",
+                  "name": "RippleUltra-TDeck-SD-v6.0-beta22.bin",
+                  "title": "App firmware bin (use with m5 booloader)"
+                }
+              ]
             }
-          ]
+          }
         }
       ]
     },
@@ -78,18 +116,22 @@
       "firmware": [
         {
           "role": "gui",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RippleUltra-T5-epaper-v6.0-beta21-merged.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
-            },
-            {
-              "type": "download",
-              "name": "RippleUltra-T5-epaper-v6.0-beta21.bin",
-              "title": "App firmware bin (use with m5 booloader)"
+          "version": {
+            "v6.0-beta22": {
+              "files": [
+                {
+                  "type": "flash",
+                  "name": "RippleUltra-T5-epaper-v6.0-beta21-merged.bin",
+                  "title": "Combined app+partition+bootloader firmware bin"
+                },
+                {
+                  "type": "download",
+                  "name": "RippleUltra-T5-epaper-v6.0-beta21.bin",
+                  "title": "App firmware bin (use with m5 booloader)"
+                }
+              ]
             }
-          ]
+          }
         }
       ]
     },
@@ -100,33 +142,110 @@
       "firmware": [
         {
           "role": "companionUsb",
-          "files": [
-            {
-              "type": "flash",
-              "name": "LilyGo_T3S3_sx1262_companion_radio_usb.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["LilyGo_T3S3_sx1262_companion_radio_usb","merged.bin"]
             }
-          ]
+          }
         },
         {
           "role": "companionBle",
-          "files": [
-            {
-              "type": "flash",
-              "name": "LilyGo_T3S3_sx1262_companion_radio_ble.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["LilyGo_T3S3_sx1262_companion_radio_ble","merged.bin"]
             }
-          ]
+          }
         },
         {
           "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "LilyGo_T3S3_sx1262_Repeater.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["LilyGo_T3S3_sx1262_Repeater","merged.bin"]
             }
-          ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lilygo T-Echo",
+      "type": "nrf52",
+      "tooltip": "<img class='device' src='/img/lilygo_techo.png'>",
+      "firmware": [
+        {
+          "role": "companionBle",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["LilyGo_T-Echo_companion_radio_ble","zip"],
+              "download": ["LilyGo_T-Echo_companion_radio_ble","uf2"]
+            }
+          }
+        },
+        {
+          "role": "repeater",
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["LilyGo_T-Echo_repeater","zip"],
+              "download": ["LilyGo_T-Echo_repeater","uf2"]
+            }
+          }
+        },
+        {
+          "role": "roomServer",
+          "github": {
+            "type": "room-server",
+            "files": {
+              "flash": ["LilyGo_T-Echo_room_server","zip"],
+              "download": ["LilyGo_T-Echo_room_server","uf2"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Lilygo LoRa32 V2.1_1.6",
+      "type": "esp32",
+      "tooltip": "<img class='device' src='/img/lilygo_t3s3.png'>",
+      "firmware": [
+        {
+          "role": "companionUsb",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["LilyGo_TLora_V2_1_1_6_companion_radio_usb","merged.bin"]
+            }
+          }
+        },
+        {
+          "role": "companionBle",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["LilyGo_TLora_V2_1_1_6_companion_radio_ble","merged.bin"]
+            }
+          }
+        },
+        {
+          "role": "repeater",
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["LilyGo_TLora_V2_1_1_6_Repeater","merged.bin"]
+            }
+          }
+        },
+        {
+          "role": "roomServer",
+          "github": {
+            "type": "room-server",
+            "files": {
+              "flash": ["LilyGo_TLora_V2_1_1_6_room_server","merged.bin"]
+            }
+          }
         }
       ]
     },
@@ -137,23 +256,30 @@
       "firmware": [
         {
           "role": "companionUsb",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_v2_companion_radio_usb.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Heltec_v2_companion_radio_usb","merged.bin"]
             }
-          ]
+          }
+        },
+        {
+          "role": "companionBle",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Heltec_v2_companion_radio_ble","merged.bin"]
+            }
+          }
         },
         {
           "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_v2_repeater.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Heltec_v2_repeater","merged.bin"]
             }
-          ]
+          }
         }
       ]
     },
@@ -164,43 +290,39 @@
       "firmware": [
         {
           "role": "companionUsb",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_v3_companion_radio_usb.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Heltec_v3_companion_radio_usb","merged.bin"]
             }
-          ]
+          }
         },
         {
           "role": "companionBle",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_v3_companion_radio_ble.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Heltec_v3_companion_radio_ble","merged.bin"]
             }
-          ]
+          }
         },
         {
           "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_v3_repeater.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Heltec_v3_repeater","merged.bin"]
             }
-          ]
+          }
         },
         {
           "role": "roomServer",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_v3_room_server.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "room-server",
+            "files": {
+              "flash": ["Heltec_v3_room_server","merged.bin"]
             }
-          ]
+          }
         }
       ]
     },
@@ -210,34 +332,50 @@
       "tooltip": "<img class='device' src='/img/heltec_t114.png'>",
       "firmware": [
         {
-          "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_T114_repeater.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "Heltec_T114_repeater.uf2",
-              "title": "firmware uf2"
+          "role": "companionBle",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Heltec_t114_companion_radio_ble","zip"],
+              "download": ["Heltec_t114_companion_radio_ble","uf2"]
             }
-          ]
+          }
+        },
+        {
+          "role": "repeater",
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Heltec_t114_repeater","zip"],
+              "download": ["Heltec_t114_repeater","uf2"]
+            }
+          }
         },
         {
           "role": "roomServer",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Heltec_T114_room_server.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "Heltec_T114_room_server.uf2",
-              "title": "firmware uf2"
+          "github": {
+            "type": "room-server",
+            "files": {
+              "flash": ["Heltec_t114_room_server","zip"],
+              "download": ["Heltec_t114_room_server","uf2"]
             }
-          ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "Heltec WSL3",
+      "type": "esp32",
+      "tooltip": "<img class='device' src='/img/heltec_wsl3.png'>",
+      "firmware": [
+        {
+          "role": "companionBle",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Heltec_WSL3_companion_radio_ble","merged.bin"]
+            }
+          }
         }
       ]
     },
@@ -248,63 +386,43 @@
       "firmware": [
         {
           "role": "companionUsb",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RAK_4631_companion_radio_usb.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "RAK_4631_companion_radio_usb.uf2",
-              "title": "firmware uf2"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["RAK_4631_companion_radio_usb", "zip"],
+              "download": ["RAK_4631_companion_radio_usb", "uf2"]
             }
-          ]
+          }
         },
         {
           "role": "companionBle",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RAK_4631_companion_radio_ble.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "RAK_4631_companion_radio_ble.uf2",
-              "title": "firmware uf2"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["RAK_4631_companion_radio_ble", "zip"],
+              "download": ["RAK_4631_companion_radio_ble", "uf2"]
             }
-          ]
+          }
         },
         {
           "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RAK_4631_Repeater.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "RAK_4631_Repeater.uf2",
-              "title": "firmware uf2"
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["RAK_4631_Repeater", "zip"],
+              "download": ["RAK_4631_Repeater", "uf2"]
             }
-          ]
+          }
         },
         {
           "role": "roomServer",
-          "files": [
-            {
-              "type": "flash",
-              "name": "RAK_4631_room_server.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "RAK_4631_room_server.uf2",
-              "title": "firmware uf2"
+          "github": {
+            "type": "room-server",
+            "files": {
+              "flash": ["RAK_4631_room_server", "zip"],
+              "download": ["RAK_4631_room_server", "uf2"]
             }
-          ]
+          }
         }
       ]
     },
@@ -315,18 +433,13 @@
       "firmware": [
         {
           "role": "companionBle",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Seeed_T1000e_companion_radio_ble.zip",
-              "title": "firmware OTA zip"
-            },
-            {
-              "type": "download",
-              "name": "Seeed_T1000e_companion_radio_ble.uf2",
-              "title": "firmware uf2"
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["t1000e_companion_radio_ble", "zip"],
+              "download": ["t1000e_companion_radio_ble", "uf2"]
             }
-          ]
+          }
         }
       ]
     },
@@ -337,25 +450,23 @@
       "firmware": [
         {
           "role": "repeater",
-          "title": "Repeater (Semtech SX1262)",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Xiao_C3_Repeater_sx1262.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "subTitle": "(sx1262 version)",
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Xiao_C3_Repeater_sx1262","merged.bin"]
             }
-          ]
+          }
         },
         {
           "role": "repeater",
-          "title": "Repeater (Semtech SX1268)",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Xiao_C3_Repeater_sx1268.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "subTitle": "(sx1268 version)",
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Xiao_C3_Repeater_sx1268","merged.bin"]
             }
-          ]
+          }
         }
       ]
     },
@@ -365,14 +476,22 @@
       "type": "esp32",
       "firmware": [
         {
-          "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Xiao_S3_WIO_Repeater.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "role": "companionBle",
+          "github": {
+            "type": "companion",
+            "files": {
+              "flash": ["Xiao_S3_WIO_companion_radio_ble","merged.bin"]
             }
-          ]
+          }
+        },
+        {
+          "role": "repeater",
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Xiao_S3_WIO_Repeater","merged.bin"]
+            }
+          }
         }
       ]
     },
@@ -383,13 +502,21 @@
       "firmware": [
         {
           "role": "repeater",
-          "files": [
-            {
-              "type": "flash",
-              "name": "Station_G2_repeater.bin",
-              "title": "Combined app+partition+bootloader firmware bin"
+          "github": {
+            "type": "repeater",
+            "files": {
+              "flash": ["Station_G2_repeater", "merged.bin"]
             }
-          ]
+          }
+        },
+        {
+          "role": "roomServer",
+          "github": {
+            "type": "room-server",
+            "files": {
+              "flash": ["Station_G2_room_server", "merged.bin"]
+            }
+          }
         }
       ]
     }

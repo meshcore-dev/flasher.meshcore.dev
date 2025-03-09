@@ -1,40 +1,47 @@
+[v-cloak] {
+  display: none;
+}
+
 body {
   display: flex;
   height: 100vh;
 }
 
-#flasher {
+#app {
   flex-grow: 1;
 }
-#flasher img.device {
+#app select {
+  cursor: pointer
+}
+#app img.device {
   width: 300px;
 }
-#flasher div.autoscroller {
+#app div.autoscroller {
   overflow: auto;
   max-height: 300px;
   display: flex;
   flex-direction: column-reverse;
 }
-#flasher pre.term {
+#app pre.term {
   font-family: monospace;
 }
-#flasher .overlay {
+#app .overlay {
   display: flex !important;
   flex-direction: column;
 }
-#flasher .console {
+#app .console {
   overflow: auto;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   margin: 0;
 }
-#flasher .console .holder {
+#app .console .holder {
   display: flex;
   flex-direction: row;
   gap: 10px;
 }
-#flasher .console-input {
+#app .console-input {
   flex-grow: 1;
   display: block;
   appearance: none;
@@ -43,6 +50,6 @@ body {
   font-family: monospace;
   font-size: .875rem;
 }
-#flasher .console-input:focus, #flasher console-input:focus{
+#app .console-input:focus, #app console-input:focus{
   outline: none;
 }

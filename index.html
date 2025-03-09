@@ -11,7 +11,204 @@
 </head>
 
 <body class="dark">
-  <div id="flasher"></div>
+  <div id="app" v-cloak>
+    <div class="flash-container">
+      <div v-if="flashing.active">
+        <header>
+          <nav>
+            <i>developer_board</i>
+            <span class="small">{{ selected.device.name }}</span>
+            <i>chevron_right</i>
+            <i>{{ selected.firmware.icon || config.role[selected.firmware.role].icon }}</i>
+            <span class="small">{{ selected.firmware.title || config.role[selected.firmware.role].title }}</span>
+          </nav>
+        </header>
+        <article v-if="flashing.error">
+          <div class="row">
+            <div class="max">
+              <h6>Flashing failed!</h6>
+              <p><span>{{ flashing.error }}</span></p>
+              <p><button @click="refresh()">Retry</button></p>
+            </div>
+          </div>
+        </article>
+        <article v-else>
+          <div class="row">
+            <div class="max" v-if="flashing.percentage < 100">
+              <h6><progress class="circle small"></progress> Flashing...</h6>
+              <p>Please do not disconnect the device</p>
+            </div>
+            <div class="max" v-else>
+              <h6>Flashing complete!</h6>
+              <p>
+                <button @click="flasherCleanup()">Close</button>
+              </p>
+            </div>
+          </div>
+          <div class="autoscroller">
+            <pre class="term" v-if="flashing.terminal">{{ flashing.terminal }}</pre>
+          </div>
+          <nav>
+            <progress :value="flashing.percentage" max="100"></progress>
+          </nav>
+        </article>
+      </div>
+      <div v-else-if="selected.firmware">
+        <header>
+          <nav>
+            <button class="circle transparent" @click="stepBack"><i>arrow_back</i></button>
+            <i>developer_board</i>
+            <a class="small" href="javascript:;" @click="stepBack">{{ selected.device.name }}</a>
+            <i>chevron_right</i>
+            <i>{{ getRoleFwValue(selected.firmware, 'icon') }}</i>
+            <span class="small">{{ getRoleFwValue(selected.firmware, 'title') }}</span>
+          </nav>
+          <nav>
+            <div class="field label suffix border small">
+              <select v-model="selected.version">
+                <template v-for="(version, versionName) in selected.firmware.version">
+                  <option v-if="version.files.length > 0">{{ versionName }}</option>
+                </template>
+              </select>
+              <label>Version</label>
+              <i>arrow_drop_down</i>
+            </div>
+            <span v-if="getSelFwValue('notes')" class="max">
+              {{ getSelFwValue('notes') }}
+            </span>
+          </nav>
+        </header>
+        <ul class="list border" v-if="selected.device.type === 'esp32'">
+          <li>
+            <label class="checkbox">
+              <input type="checkbox" v-model="selected.wipe">
+              <span>Erase device</span>
+              <div class="tooltip right max">
+                DO NOT carry out a full erase if you are simply updating your MeshCore device,
+                otherwise it will erase your MeshCore identity for that device.
+              </div>
+            </label>
+          </li>
+        </ul>
+        <button @click="dfuMode" :disabled="flashing.dfuComplete || !flashing.supported" v-if="selected.device.type === 'nrf52'">
+          <i>{{ flashing.dfuComplete ? 'check' : 'code' }}</i>
+          <span>{{ flashing.dfuComplete ? 'DFU mode active' : 'Enter DFU mode' }}</span>
+          <div class="tooltip right max" v-if="flashing.supported">
+            Enter DFU mode - this mode enables you to flash your firmware.
+            If you did not trigger the DFU mode manually, please click this button.
+          </div>
+          <div class="tooltip right max" v-else>
+            Your browser doesn't support Web Serial API. Please use Chrome or Edge on Desktop
+          </div>
+        </button>
+        <div class="medium-space"></div>
+        <nav class="small-margin">
+        <button @click="flashDevice" :disabled="!flashing.supported">
+          <i>bolt</i>
+          <span>Flash!</span>
+          <div class="tooltip right max" v-if="flashing.supported">
+            Upload the firmware into your device. Existing firwmare will get overwritten.
+            <span v-if="selected.device.type === 'nrf52'">
+              If you did not trigger DFU mode manually, use the <b>Enter DFU mode</b> before flashing
+            </span>
+          </div>
+          <div class="tooltip right max" v-else>
+            Your browser doesn't support Web Serial API. Please use Chrome or Edge on Desktop
+          </div>
+        </button>
+        <div class="max"></div>
+        <button data-ui="#down" class="active" v-if="!getSelFwValue('customFile')">
+          <i>download</i>
+          <span>Download</span><i>arrow_drop_down</i>
+          <menu class="left no-wrap" id="down" data-ui="#down">
+            <li v-for="file in getSelFwValue('files')">
+              <a data-ui="menu-selector" :href="getFirmwarePath(file)" download>{{ file.title }}</a>
+            </li>
+          </menu>
+          <div class="tooltip left max">Download a copy of the firmware files for use with other flashers</div>
+        </button>
+        </nav>
+      </div>
+      <div v-else-if="selected.device">
+        <header>
+          <nav>
+            <button class="circle transparent" @click="stepBack"><i>arrow_back</i></button>
+            <i>developer_board</i>
+            <span>{{ selected.device.name }}</span>
+          </nav>
+          <nav class="no-margin">
+            <h6 class="small max">Choose role</h6>
+          </nav>
+        </header>
+        <ul class="list border">
+          <template v-for="firmware in selected.device.firmware">
+            <li v-if="firmwareHasData(firmware)" :class="getRoleFwValue(firmware, 'class')">
+              <button class="transparent" @click="selected.firmware = firmware">
+                <i>{{ getRoleFwValue(firmware, 'icon') }}</i>
+                <span>{{ getRoleFwValue(firmware, 'title') }} {{ getRoleFwValue(firmware, 'subTitle') }}</span>
+                <div class="tooltip right max" v-if="getRoleFwValue(firmware, 'tooltip')" v-html="getRoleFwValue(firmware, 'tooltip')"></div>
+              </button>
+            </li>
+          </template>
+        </ul>
+      </div>
+      <div v-else>
+        <header>
+          <nav>
+            <i>bolt</i>
+            <h5 class="small max">MeshCore flasher</h5>
+            <button class="transparent" @click="openSerialCon()">
+              <i>terminal</i>
+              <span>Console</span>
+              <div class="tooltip left max">Open serial console to manage Routers and Room servers</div>
+            </button>
+          </nav>
+          <nav class="no-margin">
+            <h6 class="small max">Choose device</h6>
+          </nav>
+        </header>
+        <ul class="list border">
+          <li v-for="device in config.device">
+            <button class="transparent" @click="selected.device = device">
+              <i>developer_board</i>
+              <span>{{ device.name }}</span>
+              <div class="tooltip right max" v-if="device.tooltip" v-html="device.tooltip"></div>
+            </button>
+          </li>
+          <li>
+            <button class="transparent">
+              <i>unknown_document</i>
+              <span>Custom Firmware</span>
+              <div class="tooltip right max">
+                Flash custom firmware file from your computer.
+                Flasher supports <b>.bin</b> files for esp32 devices and OTA <b>.zip</b> files for nRF52 devices.
+              </div>
+              <input type="file" accept=".zip,.bin" @change="customFirmwareLoad">
+            </button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div v-if="serialCon.opened" class="overlay active">
+      <datalist id="command-db">
+        <option v-for="(desc, command) in commandReference" :value="command">{{ desc }}</option>
+      </datalist>
+      <header>
+        <nav>
+          <button class="circle transparent" @click="closeSerialCon()"><i>arrow_back</i></button>
+          <h6 class="small max">Serial Console</h6>
+        </nav>
+      </header>
+      <pre class="console" @click="consoleEditBox.focus()" ref="consoleWindow">
+        <code>{{ serialCon.content }}</code>
+        <div class="holder">
+          <span>&gt;</span>
+          <input ref="consoleEditBox" class="console-input" type="text" v-model="serialCon.edit" @keydown.enter.prevent="sendCommand(serialCon.edit)" list="command-db">
+        </div>
+      </pre>
+    </div>
+
+  </div>
 </body>
 
 </html>
